@@ -9,7 +9,7 @@ class Product(models.Model):
     )
     image = models.ImageField(
         verbose_name='Фото товара',
-        upload_to='media/',
+        upload_to='',
         blank=False,
     )
     description = models.CharField(
@@ -25,6 +25,10 @@ class Product(models.Model):
     price = models.PositiveIntegerField(
         verbose_name='Цена товара',
         blank=False,
+    )
+    link_to_shop = models.CharField(
+        max_length=256,
+        verbose_name='Ссылка на магазин'
     )
     created_at = models.DateTimeField(
         verbose_name='Дата создания',

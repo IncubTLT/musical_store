@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Вышеуказанные 4 мета-тега * должны * быть первыми в заголовке; любое другое содержимое заголовка должно быть * после* этих тегов -->
+    
+    <!-- Title  -->
+    <title>MMUSERELAX</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" type="image/png" href="{% static 'img/core-img/search.png' %}">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+    <!-- Строка поиска на будущее -->
+    <div class="search-wrapper section-padding-100">
+        <div class="search-close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-content">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
+                            <button type="submit"><img src="{% static 'img/core-img/search.png' %}" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Конец строки поиска -->
+
+    <!-- ##### Начало главного контента ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+        <!-- Мобильная навигация на будущее (max width 767px)-->
+        <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Начало зоны хедера -->
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Логотип -->
+            <div class="logo">
+                <a href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+            </div>
+            <!-- Навигация магазина на будущее -->
+            <!-- <nav class="amado-nav">
+                <ul>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="product-details.html">Product</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </nav> -->
+            <!-- Button Group -->
+            <div class="amado-btn-group mt-30 mb-100">
+                <a href="#" class="btn amado-btn mb-15">Telegram</a>
+                <a href="#" class="btn amado-btn active">WhatsApp</a>
+            </div>
+            <!-- Меню корзины на будущее -->
+            <!-- <div class="cart-fav-search mb-100">
+                <a href="cart.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+                <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
+                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
+            </div> -->
+            <!-- Ссылки на соцсети -->
+            <div class="social-info d-flex justify-content-between">
+                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div>
+        </header>
+        <!-- Конец зоны хедера -->
+
+        <!-- Product Catagories Area Start -->
+        <div class="products-catagories-area clearfix">
+            <div class="amado-pro-catagory clearfix">
+
+                <!-- Единица товара -->
+                {% for product in my_objects %}  
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <div class="single-product-wrapper">   
+                        <a href="{{ product.link_to_shop }}"> 
+                            <img src="{{ product.image.url }}" alt="{{ product.description }}">   
+                        </a>
+                        <div class="hover-content">   
+                            <div class="line"></div>
+                            <h4><span style="color:red">{{ product.name }}</span></h4>
+                            <h4>{{ product.description }}</h4> 
+                            <p>Цена {{ product.price }}₽</p>
+                            <a href="{{ product.link_to_shop }}" class="btn amado-btn mb-15">Купить</a>
+                        </div>   
+                    </div> 
+                </div>
+                {% empty %}
+                <p>Инструмент не подвезли:)</p>
+                {% endfor %}
+                <div class="wrapper">
+                </div>
+            </div>
+        </div>
+        <!-- Категория товаров Конец зоны -->
+    </div>
+    <!-- ##### Конец оболочки основного содержимого ##### -->
+
+    <!-- ##### Начало области нижнего колонтитула ##### -->
+    <div class="footer">
+        <footer class="border-top text-center py-3">
+            <style>
+            body {
+                font-family: PT Astra Sans;
+                background-color: white;
+            }
+            .footer {
+                z-index: 9999;
+                    background-color: black;
+                    position: fixed;
+                    right: 0;
+                    bottom: 0;
+                    text-align: center; 
+                    width: 100%;   
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #fafaff;
+                    height: 50px;
+            }
+            
+            </style>
+            <p><img src="{% static '/img/core-img/logo2.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+            </img>© {{ year }} Copyright <span style="color:yellow">MMUSERELAX</span></p>    
+        </footer>
+    </div>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### jQuery (Необходимы для всех запросов JS]]) ##### -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Plugins js -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+</body>
+
+</html>
