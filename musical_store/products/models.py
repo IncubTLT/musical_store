@@ -1,6 +1,25 @@
 from django.db import models
 
 
+class Group(models.Model):
+    title = models.CharField(
+        verbose_name='Наименование группы',
+        max_length=25,
+        unique=True,
+    )
+    slug = models.SlugField(
+        verbose_name='Адрес группы',
+        unique=True,
+    )
+
+    class Meta:
+        verbose_name = 'Группа товаров'
+        verbose_name_plural = 'Группы товаров'
+
+    def __str__(self) -> str:
+        return f'{self.title}, {self.slug}'
+
+
 class Product(models.Model):
     name = models.CharField(
         verbose_name='Наименование товара',
@@ -14,7 +33,7 @@ class Product(models.Model):
     )
     description = models.CharField(
         verbose_name='Описание товара',
-        max_length=256,
+        max_length=3000,
         blank=True,
     )
     color = models.CharField(
@@ -33,6 +52,13 @@ class Product(models.Model):
     created_at = models.DateTimeField(
         verbose_name='Дата создания',
         auto_now_add=True,
+    )
+    group = models.ForeignKey(
+        Group,
+        on_delete=models.PROTECT,
+        related_name='products',
+        verbose_name='Группа',
+        help_text='Группа к которой принадлежит товар',
     )
 
     class Meta:

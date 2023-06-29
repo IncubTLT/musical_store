@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>MMUSERELAX</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+    <!-- Search Wrapper Area Start -->
+    <div class="search-wrapper section-padding-100">
+        <div class="search-close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-content">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
+                            <button type="submit"><img src="{% static 'img/core-img/search.png' %}" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Wrapper Area End -->
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+        <!-- Mobile Nav (max width 767px)-->
+        <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                <a href="{% url 'products:index' %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Header Area Start -->
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="{% url 'products:index' %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+            </div>
+            <!-- Amado Nav -->
+            <nav class="amado-nav">
+                <ul>
+                    <li><a href="{% url 'products:index' %}">Главная</a></li>
+                    <li class="active"><a href="{% url 'products:group_list' slug='kalimbas' %}">Категории товаров</a></li>
+                </ul>
+            </nav>
+            <!-- Button Group -->
+            <div class="amado-btn-group mt-30 mb-100">
+                <a href="https://chat.whatsapp.com/I0UpRvp3AFl0kEjA3du9sO" class="btn amado-btn mb-15">WhatsApp</a>
+                <a href="https://t.me/+S2aRfqTg-pJhMjNi" class="btn amado-btn active">Telegram</a>
+            </div>
+            <!-- Cart Menu 
+            <div class="cart-fav-search mb-100">
+                <a href="cart.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+                <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
+                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
+            </div> -->
+            <!-- Social Button -->
+            <div class="social-info d-flex justify-content-between">
+                <a href="#" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#" target="_blank"><i class="fa fa-vk fa-2x"></i></a>    
+            </div>
+        </header>
+        <!-- Header Area End -->
+
+        <div class="shop_sidebar_area">
+
+            <!-- ##### Single Widget ##### -->
+            <div class="widget catagory mb-50">
+                <!-- Widget Title -->
+                <h6 class="widget-title mb-30">Категории</h6>
+
+                <!--  Catagories  -->
+                <div class="catagories-menu"> 
+                    <ul> 
+                      {% for g in groups %}
+                        <li {% if g.slug == slug %}class="active"{% endif %}>
+                          <a href="{% url 'products:group_list' slug=g.slug %}">{{ g.title }}</a>
+                        </li> 
+                      {% endfor %}
+                    </ul> 
+                </div>
+            </div>
+
+            <!-- ##### Single Widget ##### -->
+            <!-- <div class="widget color mb-50"> -->
+                <!-- Widget Title -->
+               <!-- <h6 class="widget-title mb-30">Цвет</h6>
+
+                <div class="widget-desc">
+                    <ul class="d-flex">
+                        <li><a href="?color=white" class="color1"></a></li>
+                        <li><a href="?color=green" class="color2"></a></li>
+                        <li><a href="?color=black" class="color3"></a></li>
+                        <li><a href="?color=blue" class="color4"></a></li>
+                        <li><a href="#" class="color5"></a></li>
+                        <li><a href="#" class="color6"></a></li>
+                        <li><a href="#" class="color7"></a></li>
+                        <li><a href="#" class="color8"></a></li>
+                    </ul>
+                </div>
+            </div> -->
+
+            <!-- ##### Single Widget ##### -->
+            <div class="widget price mb-50">
+                <!-- Widget Title -->
+                <!-- <h6 class="widget-title mb-30">Price</h6>
+
+                <div class="widget-desc">
+                    <div class="slider-range">
+                        <div data-min="10" data-max="1000" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="10" data-value-max="1000" data-label-result="">
+                            <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                        </div>
+                        <div class="range-price">₽1000 - ₽20000</div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="amado_product_area section-padding-100">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+                            <!-- Total Products -->
+                            <div class="total-products">
+                                <div class="view d-flex">
+                                    <a href="{% url 'products:group_list' slug=slug %}"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+                                    <a href="{% url 'products:group_list' slug=slug %}"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                            <!-- Sorting -->
+                            <div class="product-sorting d-flex">
+                                <div class="sort-by-date d-flex align-items-center mr-15">
+                                    <!-- <form action="#" method="get">
+                                        <select name="select" id="sortBydate">
+                                            <option value="value">Дата</option>
+                                            <option value="value">Новинки</option>
+                                            <option value="value">Цена</option>
+                                        </select>
+                                    </form>
+                                </div>
+                                <div class="view-product d-flex align-items-center">
+                                    <p>View</p>
+                                    <form action="#" method="get">
+                                        <select name="select" id="viewProduct">
+                                            <option value="value">12</option>
+                                            <option value="value">24</option>
+                                            <option value="value">48</option>
+                                            <option value="value">96</option>
+                                        </select>
+                                    </form> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!-- Single Product Area -->
+                    {% for product in page_obj %}
+                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                        <div class="single-product-wrapper">
+
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <a href="{% url 'products:product-detail' id=product.id %}">
+                                <img src="{{ product.image.url }}" alt=""></a>
+                            </div>
+
+                            <!-- Product Description -->
+                            <div class="product-description d-flex align-items-center justify-content-between">
+                                <!-- Product Meta Data -->
+                                <div class="product-meta-data">
+                                    <div class="line"></div>
+                                    <p class="product-price">₽{{ product.price }}</p>
+                                    <a href="{% url 'products:product-detail' id=product.id %}" class="btn amado-btn mb-15">
+                                        <h3>{{ product.name }}</h3>
+                                    </a>
+                                </div>
+                                <!-- Ratings & Cart -->
+                                <div class="ratings-cart text-right">
+                                    <div class="ratings">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                    <!-- <div class="cart">
+                                        <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Pagination -->
+                        <nav aria-label="navigation">
+                            <ul class="pagination justify-content-end mt-50">
+                                <!-- <li class="page-item active"><a class="page-link" href="#">01.</a></li>
+                                <li class="page-item"><a class="page-link" href="#">02.</a></li>
+                                <li class="page-item"><a class="page-link" href="#">03.</a></li>
+                                <li class="page-item"><a class="page-link" href="#">04.</a></li> -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Main Content Wrapper End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <div class="footer">
+        <footer class="border-top text-center py-3">
+            <style>
+            body {
+                font-family: PT Astra Sans;
+                background-color: white;
+            }
+            .footer {
+                z-index: 9999;
+                    background-color: black;
+                    position: fixed;
+                    right: 0;
+                    bottom: 0;
+                    text-align: center; 
+                    width: 100%;   
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #fafaff;
+                    height: 50px;
+            }
+            
+            </style>
+            <p><img src="{% static '/img/core-img/logo2.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+            </img>© {{ year }} Copyright <span style="color:yellow">MMUSERELAX</span></p>    
+        </footer>
+    </div>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Plugins js -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+
+</body>
+
+</html>
